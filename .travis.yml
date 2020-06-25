@@ -1,6 +1,6 @@
 langauge: ruby
 rbenv:
-- 2.5.3
+- 2.4.1
 addons:
   postgresql: 9.6
   chrome: stable
