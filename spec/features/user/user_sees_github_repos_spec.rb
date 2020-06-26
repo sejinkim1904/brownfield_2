@@ -21,6 +21,10 @@ describe 'As a user' do
         stub_request(:get, "https://api.github.com/user/repos?sort=updated_at&per_page=5")
           .with(headers: {'Authorization' => "Bearer #{ENV['GITHUB_TOKEN']}"})
           .to_return(status: 200, body: json_response2)
+        json_response3 = File.open("./spec/fixtures/github_following.json")
+        stub_request(:get, "https://api.github.com/user/following")
+          .with(headers: {'Authorization' => "Bearer #{ENV['GITHUB_TOKEN']}"})
+          .to_return(status: 200, body: json_response3)
 
         visit dashboard_path
 
