@@ -21,12 +21,20 @@
         <li><%= link_to repo.name, repo.html_url %></li>
       </ul>
     <% end %>
-    
+
     <h3>Followers</h3>
 
     <% github.followers.each do |follower| %>
       <ul>
         <li><%= link_to follower.login, follower.html_url %></li>
+      </ul>
+    <% end %>
+
+    <h3>Following</h3>
+
+    <% github.followings.each do |following| %>
+      <ul>
+        <li><%= link_to following.login, following.html_url %></li>
       </ul>
     <% end %>
   </section>
