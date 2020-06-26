@@ -10,17 +10,6 @@ describe "An Admin can edit a tutorial" do
     stub_request(:get, "https://www.googleapis.com/youtube/v3/videos?id=J7ikFUlkP_k&key=#{ENV['YOUTUBE_API_KEY']}&part=snippet,contentDetails,statistics")
       .to_return(status: 200, body: response)
 
-    stub_request(:get, "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_83.0.4103").
-      with(
-        headers: {
-     	    'Accept'=>'*/*',
-     	    'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-     	    'Host'=>'chromedriver.storage.googleapis.com',
-     	    'User-Agent'=>'Ruby'
-        }
-      ).
-        to_return(status: 200, body: "", headers: {})
-
     visit edit_admin_tutorial_path(tutorial)
 
     click_on "Add Video"

@@ -2,17 +2,6 @@ require 'rails_helper'
 
 describe 'vister can create an account', :js do
   it ' visits the home page' do
-    stub_request(:get, "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_83.0.4103").
-      with(
-        headers: {
-     	    'Accept'=>'*/*',
-     	    'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-     	    'Host'=>'chromedriver.storage.googleapis.com',
-     	    'User-Agent'=>'Ruby'
-        }
-      ).
-        to_return(status: 200, body: "", headers: {})
-
     email = 'jimbob@aol.com'
     first_name = 'Jim'
     last_name = 'Bob'

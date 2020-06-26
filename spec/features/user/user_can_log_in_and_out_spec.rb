@@ -23,16 +23,6 @@ describe 'User' do
 
   it 'can log out', :js do
     user = create(:user)
-    stub_request(:get, "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_83.0.4103").
-      with(
-        headers: {
-     	    'Accept'=>'*/*',
-     	    'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-     	    'Host'=>'chromedriver.storage.googleapis.com',
-     	    'User-Agent'=>'Ruby'
-        }
-      ).
-        to_return(status: 200, body: "", headers: {})
 
     visit login_path
 
