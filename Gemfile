@@ -50,4 +50,8 @@ group :development do
   gem 'travis'
 end
 
+group :test do
+  gem 'webmock'
+end
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

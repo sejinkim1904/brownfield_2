@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  def show; end
+  def show
+    render locals: {
+      github: Github.new(current_user.token)
+    }
+  end
 
   def new
     @user = User.new
