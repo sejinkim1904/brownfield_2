@@ -13,10 +13,14 @@ describe 'As a user' do
         )
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
-        json_response = File.open("./spec/fixtures/github_repos.json")
+        json_response1 = File.open("./spec/fixtures/github_followers.json")
+        stub_request(:get, "https://api.github.com/user/followers")
+          .with(headers: {'Authorization' => "Bearer #{ENV['GITHUB_TOKEN']}"})
+          .to_return(status: 200, body: json_response1)
+        json_response2 = File.open("./spec/fixtures/github_repos.json")
         stub_request(:get, "https://api.github.com/user/repos?sort=updated_at&per_page=5")
           .with(headers: {'Authorization' => "Bearer #{ENV['GITHUB_TOKEN']}"})
-          .to_return(status: 200, body: json_response)
+          .to_return(status: 200, body: json_response2)
 
         visit dashboard_path
 
