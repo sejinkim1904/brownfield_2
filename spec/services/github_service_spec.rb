@@ -19,6 +19,23 @@ describe GithubService do
         expect(repo_data).to have_key :name
         expect(repo_data).to have_key :html_url
       end
+
+      it "returns followers data" do
+        json_response = File.open("./spec/fixtures/github_followers.json")
+        stub_request(:get, "https://api.github.com/user/followers")
+          .with(headers: {'Authorization' => "Bearer #{ENV['GITHUB_TOKEN']}"})
+          .to_return(status: 200, body: json_response)
+
+        followers = subject.followers(ENV['GITHUB_TOKEN'])
+
+        expect(followers).to be_a Array
+        expect(followers[0]).to be_a Hash
+        expect(followers.count).to eq 4
+        follower_data = followers.first
+
+        expect(follower_data).to have_key :login
+        expect(follower_data).to have_key :html_url
+      end
     end
   end
 end
