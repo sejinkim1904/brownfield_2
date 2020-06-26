@@ -7,6 +7,10 @@ class GithubService
     get_json("/user/followers", token)
   end
 
+  def followings(token)
+    get_json("/user/following", token)
+  end
+
   private
 
   def conn(token)
