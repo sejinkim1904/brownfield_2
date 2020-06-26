@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'webmock/rspec'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -39,3 +40,5 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 end
+
+WebMock.disable_net_connect!(allow_localhost: true)
